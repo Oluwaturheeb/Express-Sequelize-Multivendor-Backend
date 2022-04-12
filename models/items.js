@@ -18,7 +18,10 @@ const items = userModel => ({
       isInt: true,
     }
   },
-  name: DataTypes.STRING,
+  name: {
+    type: DataTypes.STRING,
+    unique: true
+  },
   description: DataTypes.TEXT,
   price: {
     type: DataTypes.INTEGER,
@@ -42,7 +45,12 @@ const items = userModel => ({
   available: DataTypes.ENUM('1', '0'),
   warranty: DataTypes.INTEGER,
   delivery: DataTypes.INTEGER,
-  image: DataTypes.TEXT
+  image: {
+    type: DataTypes.TEXT,
+    get () {
+      return this.getDataValue('image').split(',');
+    }
+  }
 });
 
 export default items;

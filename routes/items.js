@@ -4,7 +4,6 @@ import app from '../conf/app.js';
 import m from 'multer';
 
 let uploadMiddleware = m({dest: 'public/images/items/'});
-console.log(uploadMiddleware)
 let router = express.Router();
 
 router.post('/create', [app.verifyMiddleware, uploadMiddleware.array('image', 5)], item.create);
