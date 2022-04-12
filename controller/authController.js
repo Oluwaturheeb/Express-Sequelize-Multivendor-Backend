@@ -121,7 +121,6 @@ const updatePassword = async (email, password) => {
     
     if (!user) return {code: 0, message: 'Credentials does not match any account!'};
     
-    //mail
     return {code: 1, message: 'Password has been updated!'};
   } catch (e) {
     return {code: 0, message: 'Unknown error ' + e.message};
