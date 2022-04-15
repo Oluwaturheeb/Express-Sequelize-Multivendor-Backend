@@ -1,27 +1,27 @@
-import DataTypes from 'sequelize';
+var {DataTypes} = require( 'sequelize');
+var {uuidv7} = require( 'uuidv7');
 
 const orders = {
   id: {
-    type: DataTypes.INTEGER,
-    unique: true,
+    type: DataTypes.UUID,
     primaryKey: true,
-    autoIncrement: true
-    // defaultValue: DataTypes.UUIDV4
+    set () {
+      return uuidv7();
+    },
   },
   itemId: {
-    type: DataTypes.INTEGER,
-    // defaultValue: DataTypes.UUIDV4,
+    type: DataTypes.UUID,
     validate: {
-      isInt: true,
+      isUUID: true
     }
   },
   userId: {
-    type: DataTypes.INTEGER,
-    // defaultValue: DataTypes.UUIDV4,
+    type: DataTypes.UUID,
     validate: {
-      isInt: true,
+      isUUID: true,
     }
   },
+  quantity: DataTypes.INTEGER,
 };
 
-export default orders;
+module.exports = orders;

@@ -1,6 +1,6 @@
-import nodemailer from 'nodemailer';
-import app from '../conf/app.js';
-import mail from '../conf/mail.js';
+var nodemailer = require('nodemailer');
+var app = require('../conf/app.js');
+var mail = require('../conf/mail.js');
 
 let job = async (data, type) => {
   try {
@@ -16,4 +16,4 @@ let job = async (data, type) => {
   }
 };
 
-export default job;
+exports = job;

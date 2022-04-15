@@ -1,18 +1,20 @@
-import DataTypes from 'Sequelize';
-// import Users from '../conf/db.js';
+var {DataTypes} = require( 'sequelize');
+var app = require( '../conf/app.js');
+var {uuidv7} = require( 'uuidv7');
 
 const items = userModel => ({
   id: {
-    // type: DataTypes.UUID,
-    //defaultValue: DataTypes.UUIDV4
-    type: DataTypes.INTEGER,
+    type: DataTypes.UUID,
     primaryKey: true,
-    autoIncrement: true
+    set () {
+      return uuidv7();
+    }
   },
-  userId: {
-    type: DataTypes.INTEGER,
+  storeId: {
+    type: DataTypes.UUID,
     references: {
       model: userModel,
+      allowNull: false,
     },
     validate: {
       isInt: true,
@@ -23,20 +25,30 @@ const items = userModel => ({
     unique: true
   },
   description: DataTypes.TEXT,
+  topItem: DataTypes.ENUM('0', '1'),
   price: {
     type: DataTypes.INTEGER,
     get() {
       const discount = this.getDataValue('discount');
       const price = this.getDataValue('price');
-      if (discount) {
+      console.log(discount)
+      if (!discount) return price;
+      else {
         let cal = discount / 100;
-        return price - (price * cal);
+        return {
+          discount: price * cal,
+          actualPrice: price,
+          price: price - (price * cal),
+        };
       }
     }
   },
   discount: {
     type: DataTypes.INTEGER,
     allowNull: true,
+    validate: {
+      max: app.discount,
+    }
   },
   stock: {
     type: DataTypes.INTEGER,
@@ -48,9 +60,11 @@ const items = userModel => ({
   image: {
     type: DataTypes.TEXT,
     get () {
-      return this.getDataValue('image').split(',');
+      let image = this.getDataValue('image');
+      return (image) ? 
+        image.split(',') : null;
     }
-  }
+  },
 });
 
-export default items;
+module.exports = items;

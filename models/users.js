@@ -1,11 +1,14 @@
-import DataTypes from 'sequelize';
+var DataTypes = require('sequelize');
+var {uuidv7} = require('uuidv7');
 
 const users = {
   id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
+    type: DataTypes.UUID,
     primaryKey: true,
-    //defaultValue: DataTypes.UUIDV4
+    set (value) {
+      console.log(value, uuidv7())
+      this.setDataValue('id', uuidv7())
+    }
   },
   email: {
     type: DataTypes.STRING,
@@ -15,7 +18,6 @@ const users = {
     }
   },
   name: DataTypes.STRING,
-  store: DataTypes.STRING,
   password: DataTypes.STRING,
   avatar: {
     type: DataTypes.TEXT,
@@ -25,19 +27,10 @@ const users = {
     type: DataTypes.INTEGER,
     allowNull: true,
   },
-  verified: DataTypes.ENUM('none', 'email', 'phone', '1'),
-  long: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-  },
-  lat: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-  },
   nationality: {
     type: DataTypes.STRING,
     allowNull: true,
   }
 };
 
-export default users;
+module.exports = users;

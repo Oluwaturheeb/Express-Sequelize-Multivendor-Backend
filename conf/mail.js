@@ -1,6 +1,6 @@
-import mailer from 'nodemailer';
+var mailer = require('nodemailer');
 
-export default mailer.createTransport({
+exports = mailer.createTransport({
   host: "smtp.mailtrap.io",
   port: 2525,
   auth: {

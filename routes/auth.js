@@ -1,5 +1,5 @@
-import express from 'express';
-import {login, register, forgotPassword, changePassword, confirmEmail} from '../controller/authController.js';
+var express = require('express');
+var {login, register, forgotPassword, changePassword, confirmEmail} = require('../controller/authController.js');
 
 
 var router = express.Router();
@@ -10,4 +10,4 @@ router.get('/confirm/:data', confirmEmail);
 router.post('/forgot-password', forgotPassword);
 router.post('/change-password', changePassword);
 
-export default router;
+module.exports = router;

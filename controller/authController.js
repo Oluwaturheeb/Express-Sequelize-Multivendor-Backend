@@ -1,11 +1,11 @@
 // imports
-import crypt from 'bcryptjs';
-import {Users} from '../conf/db.js';
-import {mailJob} from './cron.js';
-import app from '../conf/app.js';
-import jwt from 'jsonwebtoken';
+var crypt = require('bcryptjs');
+var {Users} = require('../conf/db.js');
+var {mailJob} = require('./cron.js');
+var app = require('../conf/app.js');
+var jwt = require('jsonwebtoken');
 
-export const login = async (req, res) => {
+const login = async (req, res) => {
   let email = app.validate(req.body.email),
   password = app.validate(req.body.password);
   
@@ -18,26 +18,27 @@ export const login = async (req, res) => {
         }
       });
       
-      if (!user) res.setHeader('content-Type','application/json').status(400).send({code: 0, message: 'Credentials does not match any account!'});
+      if (!user) res.status(400).json({code: 0, message: 'Credentials does not match any account!'});
       else {
         let check = await crypt.compare(password, user.password);
         
-        if (!check) res.setHeader('content-Type','application/json').status(400).send({code: 0, message: 'Credentials does not match any account!'});
+        if (!check) res.status(400).json({code: 0, message: 'Credentials does not match any account!'});
         else {
-          let token = await app.signToken(user.id, process.env.JWTSECRET);
-          res.send({code: 1, message: `Welcome, ${user.name}`, user: {token: token, ...user.dataValues}});
+          let token = await app.signToken(user.dataValues, process.env.JWTSECRET);
+          res.json({code: 1, message: `Welcome, ${user.name}`, user: {token: token, ...user.dataValues}});
         }
       }
     } catch (e) {
-      res.sendStatus(412).json({code: 0, message: e.message});
+      res.status(412).json({code: 0, message: e.message});
     }
   }
 };
 
-export const register = async (req, res) => {
-  let {email, password, store, name} = req.body;
+const register = async (req, res) => {
+  //var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  let {email, password, name} = req.body;
   
-  if (!email && !password && !store && !name) res.sendStatus(403).json({message: 'Action required!'});
+  if (!email && !password && !name) res.sendStatus(403).json({message: 'Action required!'});
   else {
     try {
       let hashed = await crypt.hash(password, 10);
@@ -45,7 +46,6 @@ export const register = async (req, res) => {
       let user = await Users.create({
         name: app.validate(name),
         email: app.validate(email),
-        store: app.validate(store),
         password: hashed,
       });
       
@@ -54,29 +54,29 @@ export const register = async (req, res) => {
       let token = await app.signToken(user.dataValues.email);
       mailJob({url: token, ...user.dataValues}, 'confirmEmail');
     } catch (e) {
-      res.status(412).json({code: 0,message: 'Email already exists!'})
+      res.status(412).json({code: 0,message: 'Email already exists!' + e.message})
     }
   }
 };
 
-export const confirmEmail = (req, res, next) => {
+const confirmEmail = (req, res, next) => {
   try {
     let token = jwt.verify(req.params.data, process.env.JWTSECRET);
     let user = Users.update({verify: 'email'}, {where: {
       email: token
     }});
     
-    if (user) res.send({code: 1, msg: 'Email address has been confirmed'});
+    if (user) res.json({code: 1, msg: 'Email address has been confirmed'});
     else res.status(404).json({code: 0, message: 'Cannot find account!'});
   } catch (e) {
     res.status(404).json({code: 0, message: 'Cannot find account!'});
   }
 }
 
-export const forgotPassword = async (req, res) => {
+const forgotPassword = async (req, res) => {
   let email = app.validate(req.body.email);
   
-  if (!email) res.status(412).send({code: 0, message: 'Action required!'});
+  if (!email) res.status(412).json({code: 0, message: 'Action required!'});
   else {
     try {
       let user = await Users.findOne({
@@ -85,27 +85,27 @@ export const forgotPassword = async (req, res) => {
         }
       });
       
-      if (!user) res.status(400).send({code: 0, message: 'Credentials does not match any account!'});
+      if (!user) res.status(400).json({code: 0, message: 'Credentials does not match any account!'});
       else {
-        res.send({code: 1, message: 'Email has been sent!'});
+        res.json({code: 1, message: 'Email has been sent!'});
         //mail
         let token = await app.signToken(user.dataValues.email);
         let job = mailJob({url: token, ...user.dataValues}, 'welcome');
       }
     } catch (e) {console.log(e)
-      res.status(400).send({code: 0, message: e.message});
+      res.status(400).json({code: 0, message: e.message});
     }
   }
 };
 
-export const changePassword = async (req, res) => {
+const changePassword = async (req, res) => {
   let email = app.validate(req.body.email),
   password = app.validate(req.body.password);
   
   let stat = await updatePassword(email, password);
   
-  if (stat.code !== 1) res.status(400).send(stat);
-  else res.send(stat);
+  if (stat.code !== 1) res.status(400).json(stat);
+  else res.json(stat);
 };
 
 const updatePassword = async (email, password) => {
@@ -126,3 +126,8 @@ const updatePassword = async (email, password) => {
     return {code: 0, message: 'Unknown error ' + e.message};
   }
 }
+
+module.exports = {
+  login, register, forgotPassword,
+  changePassword, confirmEmail
+};

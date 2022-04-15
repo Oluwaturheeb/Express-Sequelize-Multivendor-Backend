@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken';
-import validator from 'validator';
+var jwt = require('jsonwebtoken');
+var validator = require('validator');
 
 var app = {
   host: 'localhost:8000',
@@ -27,6 +27,12 @@ var app = {
     data.subject = 'Welcome to' +  app.appName + ', ' + data.name;
     return template(data, type);
   },
+  // control how discount can be on an item
+  discount: 50,
+  // control charges on item purchase in %
+  charges: 7,
+  // control charges on topitem purchase in %
+  topItemCharges: 12,
 };
 
 let template = (data, type = 'welcome') => {
@@ -52,4 +58,4 @@ let template = (data, type = 'welcome') => {
 };
 
 
-export default app;
+module.exports = app;
