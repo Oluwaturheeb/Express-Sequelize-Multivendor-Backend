@@ -1,14 +1,11 @@
 var {DataTypes} = require( 'sequelize');
 var app = require( '../conf/app.js');
-var {uuidv7} = require( 'uuidv7');
 
 const items = userModel => ({
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
-    set () {
-      return uuidv7();
-    }
+    allowNull: false,
   },
   storeId: {
     type: DataTypes.UUID,

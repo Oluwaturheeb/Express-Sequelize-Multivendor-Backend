@@ -5,7 +5,7 @@ const store = {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
-    set () { return uuidv7()}
+    allowNull: false,
   },
   userId: DataTypes.UUID,
   name: {

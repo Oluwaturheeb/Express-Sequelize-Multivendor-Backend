@@ -4,7 +4,8 @@ var {Users} = require('../conf/db.js');
 var {mailJob} = require('./cron.js');
 var app = require('../conf/app.js');
 var jwt = require('jsonwebtoken');
-
+var {uuidv7} = require('uuidv7');
+  
 const login = async (req, res) => {
   let email = app.validate(req.body.email),
   password = app.validate(req.body.password);
@@ -44,6 +45,7 @@ const register = async (req, res) => {
       let hashed = await crypt.hash(password, 10);
       
       let user = await Users.create({
+        id: uuidv7(),
         name: app.validate(name),
         email: app.validate(email),
         password: hashed,
@@ -53,7 +55,7 @@ const register = async (req, res) => {
       else res.json({code: 0, message: 'Cannot register user!'});
       let token = await app.signToken(user.dataValues.email);
       mailJob({url: token, ...user.dataValues}, 'confirmEmail');
-    } catch (e) {
+    } catch (e) {console.log(e)
       res.status(412).json({code: 0,message: 'Email already exists!' + e.message})
     }
   }

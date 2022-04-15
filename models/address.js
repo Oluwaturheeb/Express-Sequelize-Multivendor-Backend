@@ -5,7 +5,7 @@ const address = {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
-    set () { return uuidv7()}
+    allowNull: false,
   },
   address: DataTypes.TEXT,
   lga: DataTypes.STRING,

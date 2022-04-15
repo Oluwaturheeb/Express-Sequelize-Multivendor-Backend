@@ -7,4 +7,4 @@ let mailJob = (data = '', type = '') => {
   });
 };
 
-exports = mailJob;
+module.exports = {mailJob};

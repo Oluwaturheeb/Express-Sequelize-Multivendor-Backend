@@ -1,10 +1,12 @@
 var {Store, Users, Items, Address, Orders} = require('../conf/db.js');
 var app = require('../conf/app.js');
 var fs = require('fs');
+var {uuidv7} = require('uuidv7');
 
 const createStore = async (req, res) => {
   try {
     let userId = req.token.id,
+    id = uuidv7(),
     name = app.validate(req.body.name),
     email = app.validate(req.body.email),
     phone = app.validate(req.body.phone),
@@ -18,7 +20,7 @@ const createStore = async (req, res) => {
     })();
     
     let store = await Store.create({
-      userId, name, email, phone,
+      userId, name, email, phone, id,
       long, lat, nationality, avatar
     });
     

@@ -3,6 +3,7 @@ var {Items, Store, Orders} = require('../conf/db.js');
 var fs = require('fs');
 var sequelize = require('sequelize');
 var _ = require('lodash');
+var {uuidv7} = require('uuidv7');
 
 const create = async (req, res) => {
   try {
@@ -28,6 +29,7 @@ const create = async (req, res) => {
     }).join(',');
     
     let newItem = await Items.create({
+      id: uuidv7(),
       name, price, discount,
       description, warranty, available,
       storeId, stock, image
@@ -229,6 +231,7 @@ const orderItem = async (req, res) => {
       item = await Orders.bulkCreate(item);
     } else {
     item = await Orders.create(item = {
+      id: uuidv7(),
         itemId: item,
         userId: user.id
       });

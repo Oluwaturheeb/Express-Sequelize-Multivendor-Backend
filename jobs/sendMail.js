@@ -10,10 +10,9 @@ let job = async (data, type) => {
       subject: data.subject,
       html: app.mail(data,type)
     });
-    console.log(check);
   } catch (e) {
     console.log(e.message);
   }
 };
 
-exports = job;
+module.exports = job;

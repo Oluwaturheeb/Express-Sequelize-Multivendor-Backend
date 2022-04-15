@@ -1,13 +1,10 @@
 var {DataTypes} = require( 'sequelize');
-var {uuidv7} = require( 'uuidv7');
 
 const orders = {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
-    set () {
-      return uuidv7();
-    },
+    allowNull: false,
   },
   itemId: {
     type: DataTypes.UUID,

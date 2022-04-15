@@ -1,14 +1,10 @@
 var DataTypes = require('sequelize');
-var {uuidv7} = require('uuidv7');
 
 const users = {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
-    set (value) {
-      console.log(value, uuidv7())
-      this.setDataValue('id', uuidv7())
-    }
+    allowNull: false,
   },
   email: {
     type: DataTypes.STRING,
