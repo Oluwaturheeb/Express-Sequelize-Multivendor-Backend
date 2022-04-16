@@ -1,10 +1,10 @@
 // imports
-var crypt = require('bcryptjs');
-var {Users} = require('../conf/db.js');
-var {mailJob} = require('./cron.js');
-var app = require('../conf/app.js');
-var jwt = require('jsonwebtoken');
-var {uuidv7} = require('uuidv7');
+import crypt from 'bcryptjs';
+import {Users} from '../conf/db.js';
+import {mailJob} from './cron.js';
+import app from '../conf/app.js';
+import jwt from 'jsonwebtoken';
+import {uuidv7} from 'uuidv7';
   
 const login = async (req, res) => {
   let email = app.validate(req.body.email),
@@ -36,7 +36,7 @@ const login = async (req, res) => {
 };
 
 const register = async (req, res) => {
-  //var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  //import ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
   let {email, password, name} = req.body;
   
   if (!email && !password && !name) res.sendStatus(403).json({message: 'Action required!'});
@@ -129,7 +129,7 @@ const updatePassword = async (email, password) => {
   }
 }
 
-module.exports = {
+export default {
   login, register, forgotPassword,
   changePassword, confirmEmail
 };

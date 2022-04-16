@@ -1,8 +1,8 @@
-var express = require('express');
-var {login, register, forgotPassword, changePassword, confirmEmail} = require('../controller/authController.js');
+import express from 'express';
+import {login, register, forgotPassword, changePassword, confirmEmail} from '../controller/authController.js';
 
 
-var router = express.Router();
+const router = express.Router();
 
 router.post('/login', login);
 router.post('/register', register);
@@ -10,4 +10,4 @@ router.get('/confirm/:data', confirmEmail);
 router.post('/forgot-password', forgotPassword);
 router.post('/change-password', changePassword);
 
-module.exports = router;
+export default router;

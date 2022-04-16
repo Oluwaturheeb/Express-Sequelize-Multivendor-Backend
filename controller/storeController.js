@@ -1,7 +1,7 @@
-var {Store, Users, Items, Address, Orders} = require('../conf/db.js');
-var app = require('../conf/app.js');
-var fs = require('fs');
-var {uuidv7} = require('uuidv7');
+import {Store, Users, Items, Address, Orders} from '../conf/db.js';
+import app from '../conf/app.js';
+import fs from 'fs';
+import {uuidv7} from 'uuidv7';
 
 const createStore = async (req, res) => {
   try {
@@ -56,6 +56,6 @@ const verify = async (req, res) => {
   }
 };
 
-module.exports = {
+export default {
   createStore, dashboard, verify
 };

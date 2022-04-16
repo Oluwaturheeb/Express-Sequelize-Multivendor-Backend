@@ -1,9 +1,9 @@
-var app = require('../conf/app.js');
-var {Items, Store, Orders} = require('../conf/db.js');
-var fs = require('fs');
-var sequelize = require('sequelize');
-var _ = require('lodash');
-var {uuidv7} = require('uuidv7');
+import app from '../conf/app.js';
+import {Items, Store, Orders} from '../conf/db.js';
+import fs from 'fs';
+import sequelize from 'sequelize';
+import _ from 'lodash';
+import {uuidv7} from 'uuidv7';
 
 const create = async (req, res) => {
   try {
@@ -38,7 +38,7 @@ const create = async (req, res) => {
     if (newItem) res.json({code: 1, message: 'Item has been created successfully!', item: newItem});
     else res.json({code: 0, message: 'Cannot create item!'});
   } catch (e) {
-    res.status(500).send(e.message);
+    res.status(500).send({code: 0, message: 'Product with the same name already exits'});
   }
 }
 
@@ -76,7 +76,7 @@ const removeDiscount = async (req, res) => {
       });
       
       if (!item) res.json({code: 0, message: 'Can not find the item specified!'});
-      else res.json({code: 1, message: 'Discount has been removed = require(this item!'});
+      else res.json({code: 1, message: 'Discount has been removed fromthis item!'});
     }
   } catch (e) {
     res.json({code: 0, message: 'unknown error! ' + e.message});
@@ -112,7 +112,7 @@ const removeDiscountAll = async (req, res) => {
       where: {userId}
     });
     
-    res.json({code: 1, message: 'Discount has been removed = require(all items!'});
+    res.json({code: 1, message: 'Discount has been removed fromall items!'});
   } catch (e) {
     res.json({code: 0, message: 'unknown error! ' + e.message});
   }
@@ -244,7 +244,7 @@ const orderItem = async (req, res) => {
   }
 }
 
-module.exports = {
+export default {
   create, discount, removeDiscount, discountAll, removeDiscountAll,
   update, remove, topItem, itemInfo,
   cart, orderItem

@@ -1,7 +1,7 @@
-var express = require('express');
-var item = require('../controller/itemsController.js');
-var app = require('../conf/app.js');
-var m = require('multer');
+import express from 'express';
+import item from '../controller/itemsController.js';
+import app from '../conf/app.js';
+import m from 'multer';
 
 let uploadMiddleware = m({dest: 'public/images/items/'});
 let router = express.Router();
@@ -17,4 +17,4 @@ router.post('/remove', app.verifyMiddleware, item.remove);
 router.get('/get-item/:item', app.verifyMiddleware, item.itemInfo);
 router.post('/cart', app.verifyMiddleware, item.cart);
 router.post('/order', app.verifyMiddleware, item.orderItem);
-module.exports = router;
+export default router;

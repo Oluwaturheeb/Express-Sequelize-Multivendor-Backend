@@ -1,4 +1,4 @@
-var {Items, Users, Orders} = require('../conf/db.js');
+import {Items, Users, Orders} from '../conf/db.js';
 
 const profile = async (req, res) => {
   let user = req.token;
@@ -25,6 +25,6 @@ const purchase = async (req, res) => {
   }
 }
 
-module.exports = {
+export default {
   profile, account, purchase
 }

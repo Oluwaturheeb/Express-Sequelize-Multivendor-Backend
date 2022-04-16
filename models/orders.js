@@ -1,4 +1,4 @@
-var {DataTypes} = require( 'sequelize');
+import {DataTypes} from 'sequelize';
 
 const orders = {
   id: {
@@ -21,4 +21,4 @@ const orders = {
   quantity: DataTypes.INTEGER,
 };
 
-module.exports = orders;
+export default orders;

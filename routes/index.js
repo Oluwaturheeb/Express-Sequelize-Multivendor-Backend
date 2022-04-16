@@ -1,10 +1,9 @@
-var express = require('express');
-var router = express.Router();
+import express from 'express';
+import controller from '../controller/indexController.js';
+const router = express.Router();
 
 
 /* GET home page. */
-router.get('/', async (req, res) => {
-  res.send('Hello world');
-});
+router.get('/', controller);
 
-module.exports = router;
+export default router;

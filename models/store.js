@@ -1,5 +1,5 @@
-var {DataTypes} = require( 'sequelize');
-var {uuidv7} = require( 'uuidv7');
+import {DataTypes} from 'sequelize';
+import {uuidv7} from 'uuidv7';
 
 const store = {
   id: {
@@ -28,4 +28,4 @@ const store = {
   },
 };
 
-module.exports = store;
+export default store;

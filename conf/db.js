@@ -1,35 +1,55 @@
-var {Sequelize, DataTypes} = require('sequelize');
-var users = require('../models/users.js');
-var orders = require('../models/orders.js');
-var items = require('../models/items.js');
-var store = require('../models/store.js');
-var address = require('../models/address.js');
+import {Sequelize, DataTypes} from 'sequelize';
+import users from '../models/users.js';
+import orders from '../models/orders.js';
+import items from '../models/items.js';
+import store from '../models/store.js';
+import address from '../models/address.js';
+import categories from '../models/categories.js';
+import reviews from '../models/reviews.js';
+import role from '../models/role.js';
 
-const seq = new Sequelize('multi', 'root', '', {
+
+const seq = new Sequelize('multi', 'root', 'password', {
   dialect: 'postgres',
   url: process.env.DATABASE_URL,
   host: 'localhost'
 });
 
-const Users = seq.define('users', users);
-const Orders = seq.define('orders', orders);
-const Items = seq.define('items', items(Users));
-const Store = seq.define('store', store);
-const Address = seq.define('address', address);
+export const Users = seq.define('users', users);
+export const Orders = seq.define('orders', orders);
+export const Categories = seq.define('categories', categories);
+export const Store = seq.define('store', store);
+export const Items = seq.define('items', items(Store));
+export const Address = seq.define('address', address);
+export const Reviews = seq.define('reviews', reviews);
+export const Roles = seq.define('roles', role);
 
-//relationship
-// for sellers
+// associations
+
+// setup roles
+Users.hasOne(Roles);
+Roles.belongsTo(Users);
+
+// store belongs to user
 Users.hasOne(Store);
 Store.belongsTo(Users);
+
 // get items for stores
 Store.hasMany(Items);
 Items.belongsTo(Store);
+
+// item has one category
+Categories.hasOne(Items);
+Items.belongsTo(Categories);
 
 // get orders for sellers
 Items.hasMany(Orders);
 Orders.belongsTo(Items);
 
-// Items.belongsTo(Users);
+// review assoc
+Items.hasMany(Reviews);
+Reviews.belongsTo(Items);
+
 
 //get orders
 Users.hasMany(Orders);
@@ -39,7 +59,4 @@ Users.hasMany(Address);
 Orders.belongsTo(Users);
 Address.belongsTo(Users);
 
-seq.sync({force: true});
-module.exports = {
-  Users, Orders, Items, Address, Store
-};
+// seq.sync({force: true});

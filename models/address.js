@@ -1,5 +1,5 @@
-var {DataTypes} = require('sequelize');
-var {uuidv7} = require('uuidv7');
+import {DataTypes} from 'sequelize';
+import {uuidv7} from 'uuidv7';
 
 const address = {
   id: {
@@ -15,4 +15,4 @@ const address = {
   info: DataTypes.TEXT,
 };
 
-module.exports = address;
+export default address;

@@ -1,7 +1,7 @@
-var jwt = require('jsonwebtoken');
-var validator = require('validator');
+import jwt from 'jsonwebtoken';
+import validator from 'validator';
 
-var app = {
+const app = {
   host: 'localhost:8000',
   appName: 'NothingMuch',
   appLogo: 'images/logo.png',
@@ -38,7 +38,7 @@ var app = {
 let template = (data, type = 'welcome') => {
   switch (type) {
     case 'welcome':
-      var tmp = `
+      const tmp = `
 <html>
 <head>
   <title>Express</title>
@@ -58,4 +58,4 @@ let template = (data, type = 'welcome') => {
 };
 
 
-module.exports = app;
+export default app;

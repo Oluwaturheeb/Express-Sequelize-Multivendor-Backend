@@ -1,4 +1,4 @@
-var DataTypes = require('sequelize');
+import DataTypes from 'sequelize';
 
 const users = {
   id: {
@@ -29,4 +29,4 @@ const users = {
   }
 };
 
-module.exports = users;
+export default users;

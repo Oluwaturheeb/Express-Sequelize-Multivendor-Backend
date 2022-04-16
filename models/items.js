@@ -1,5 +1,5 @@
-var {DataTypes} = require( 'sequelize');
-var app = require( '../conf/app.js');
+import {DataTypes} from 'sequelize';
+import app from '../conf/app.js';
 
 const items = userModel => ({
   id: {
@@ -13,9 +13,12 @@ const items = userModel => ({
       model: userModel,
       allowNull: false,
     },
-    validate: {
-      isInt: true,
-    }
+  },
+  categoryId: {
+    type: DataTypes.UUID,
+    references: {
+      model: 'categories',
+    },
   },
   name: {
     type: DataTypes.STRING,
@@ -28,7 +31,7 @@ const items = userModel => ({
     get() {
       const discount = this.getDataValue('discount');
       const price = this.getDataValue('price');
-      console.log(discount)
+      
       if (!discount) return price;
       else {
         let cal = discount / 100;
@@ -64,4 +67,4 @@ const items = userModel => ({
   },
 });
 
-module.exports = items;
+export default items;
