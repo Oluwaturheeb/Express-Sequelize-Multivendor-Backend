@@ -18,6 +18,7 @@ const items = userModel => ({
     type: DataTypes.UUID,
     references: {
       model: 'categories',
+      allowNull: false,
     },
   },
   name: {

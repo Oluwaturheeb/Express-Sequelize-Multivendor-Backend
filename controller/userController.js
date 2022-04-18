@@ -1,13 +1,20 @@
-import {Items, Users, Orders} from '../conf/db.js';
+import {Items, Users, Orders, Store} from '../conf/db.js';
 
 const profile = async (req, res) => {
   let user = req.token;
-  let items = await Orders.findAll({
+  let orders = await Orders.findAll({
     where: {userId: user.id},
-    include: [Items],
+    include: [{
+      model: Items,
+      attributes: ['name', 'price', 'id', 'image'],
+      include: [{
+        model: Store,
+        attributes: ['name','id']
+      }],
+    }],
     limit: 30,
-  },{raw: true});
-  res.json({items, user});
+  });
+  res.json({orders, user});
 };
 
 const account = (req, res) => {

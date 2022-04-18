@@ -10,4 +10,5 @@ const router = express.Router();
 /* GET store listing. */
 router.post('/create-store', [app.verifyMiddleware, uploadMiddleware.single('avatar')], store.createStore);
 router.get('/dashboard', app.verifyMiddleware, store.dashboard);
+router.get('/:store', app.verifyMiddleware, store.getStore);
 export default router;

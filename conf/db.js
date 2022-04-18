@@ -9,7 +9,7 @@ import reviews from '../models/reviews.js';
 import role from '../models/role.js';
 
 
-const seq = new Sequelize('multi', 'root', 'password', {
+export const seq = new Sequelize('multi', 'root', 'password', {
   dialect: 'postgres',
   url: process.env.DATABASE_URL,
   host: 'localhost'
@@ -34,9 +34,11 @@ Roles.belongsTo(Users);
 Users.hasOne(Store);
 Store.belongsTo(Users);
 
-// get items for stores
+// get items and orders for stores
 Store.hasMany(Items);
+Store.hasMany(Orders);
 Items.belongsTo(Store);
+Orders.belongsTo(Store);
 
 // item has one category
 Categories.hasOne(Items);
@@ -49,6 +51,8 @@ Orders.belongsTo(Items);
 // review assoc
 Items.hasMany(Reviews);
 Reviews.belongsTo(Items);
+Users.hasOne(Reviews);
+Reviews.belongsTo(Users);
 
 
 //get orders

@@ -1,4 +1,4 @@
-import {Store, Users, Items, Address, Orders} from '../conf/db.js';
+import {Store, Users, Items, Address, Orders, Roles} from '../conf/db.js';
 import app from '../conf/app.js';
 import fs from 'fs';
 import {uuidv7} from 'uuidv7';
@@ -15,13 +15,18 @@ const createStore = async (req, res) => {
     nationality = app.validate(req.body.country),
     avatar = (() => {
       let file = req.file;
+      if (!req.file) return 'images/store/default.png';
       fs.rename (file.path, file.path + '.jpg', err => (err) ? console.log(err): null);
-      return file.path + '.jpg';
+      return file.path.substr(7) + '.jpg';
     })();
     
     let store = await Store.create({
       userId, name, email, phone, id,
       long, lat, nationality, avatar
+    });
+
+    await Roles.update({role: 'store'}, {
+      where: {userId}
     });
     
     if (!store) res.json({code: 0, message: 'There is a store with the given name'});
@@ -36,14 +41,19 @@ const dashboard = async (req, res) => {
   
   try {
     // get Items
-    
-    let items = await Store.findOne({
+
+    let store = await Store.findOne({
       where: {userId: user.id},
-      include: Items
+      include: [{
+        model: Items,
+      }, {
+        model: Orders
+      }]
     });
-    
-    res.send(items);
+
+    res.send(store);
   } catch (e) {
+    console.log(e.message)
     res.send(e.message);
   }
 };
@@ -56,6 +66,18 @@ const verify = async (req, res) => {
   }
 };
 
+const getStore = async (req, res) => {
+  let store = app.validate(req.params.store);
+
+  let storeInfoAndItems = await Store.findOne({
+    where: {id: store},
+    include: Items
+  });
+
+  if (!storeInfoAndItems) res.status(404).send({code: 0, message: 'Can not find the specified resources'});
+  else res.json({store: storeInfoAndItems});
+}
+
 export default {
-  createStore, dashboard, verify
+  createStore, dashboard, verify, getStore
 };

@@ -1,4 +1,3 @@
-import nodemailer from 'nodemailer';
 import app from '../conf/app.js';
 import mail from '../conf/mail.js';
 

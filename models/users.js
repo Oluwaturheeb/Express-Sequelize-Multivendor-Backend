@@ -26,7 +26,15 @@ const users = {
   nationality: {
     type: DataTypes.STRING,
     allowNull: true,
-  }
+  },
+  /* verify: {
+    type: DataTypes.ENUM('NO', 'YES'),
+    defaultValue: 'NO',
+  },
+  authType: {
+    type: DataTypes.ENUM('LOCAL', 'SOCIAL'),
+    defaultValue: 'LOCAL'
+  } */
 };
 
 export default users;

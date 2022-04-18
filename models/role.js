@@ -1,7 +1,6 @@
 import {DataTypes} from 'sequelize';
-import app from '../conf/app.js';
 
-const categories = {
+const role = {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
@@ -17,4 +16,4 @@ const categories = {
   role: DataTypes.STRING,
 };
 
-export default categories;
+export default role;

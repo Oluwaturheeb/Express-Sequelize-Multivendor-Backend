@@ -17,4 +17,5 @@ router.post('/remove', app.verifyMiddleware, item.remove);
 router.get('/get-item/:item', app.verifyMiddleware, item.itemInfo);
 router.post('/cart', app.verifyMiddleware, item.cart);
 router.post('/order', app.verifyMiddleware, item.orderItem);
+router.post('/review', app.verifyMiddleware, item.review);
 export default router;

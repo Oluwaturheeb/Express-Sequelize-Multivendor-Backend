@@ -33,12 +33,19 @@ const app = {
   charges: 7,
   // control charges on topitem purchase in %
   topItemCharges: 12,
+  // control auto approve of reviews
+  autoApproveReviews: false,
+  itemsListing: {
+    topItems: 20,
+    regular: 30,
+  }
 };
 
 let template = (data, type = 'welcome') => {
+  let tmp;
   switch (type) {
     case 'welcome':
-      const tmp = `
+      tmp = `
 <html>
 <head>
   <title>Express</title>

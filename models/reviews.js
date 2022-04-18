@@ -25,6 +25,14 @@ const reviews = {
     type: DataTypes.INTEGER,
     allowNull: true,
   },
+  flag: {
+    defaultValue: (() => {
+      let status;
+      (app.autoApproveReviews) ? status = 'approved' : status = 'pending';
+      return status;
+    })(),
+    type: DataTypes.ENUM('pending', 'approved')
+  },
 };
 
 export default reviews;

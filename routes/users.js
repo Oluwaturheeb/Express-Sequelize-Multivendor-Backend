@@ -6,6 +6,5 @@ const router = express.Router();
 
 /* GET users listing. */
 router.get('/dashboard', app.verifyMiddleware, user.profile);
-router.post('/make-order', app.verifyMiddleware, user.purchase);
 router.post('/account-update', app.verifyMiddleware, user.account);
 export default router;
