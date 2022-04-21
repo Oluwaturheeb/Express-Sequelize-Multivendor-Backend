@@ -32,12 +32,7 @@ export const login = async (req, res) => {
           attributes: ['role']
         }]
       };
-      if (req.route.path === '/login')
-        var user = await Users.findOne(loginQuery);
-      else {
-        delete loginQuery.where.verify;
-        user = await Admin.findOne(loginQuery);
-      }
+      var user = await Users.findOne(loginQuery);
       
       if (!user) res.status(400).json({
         code: 0, message: 'Credentials does not match any account!'

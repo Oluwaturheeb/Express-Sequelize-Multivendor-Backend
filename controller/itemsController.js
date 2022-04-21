@@ -1,5 +1,5 @@
 import app from '../conf/app.js';
-import {Items, Store, Orders, Reviews, Users, Categories} from '../conf/db.js';
+import {Items, Store, Orders, Reviews, Users, Categories, Wish} from '../conf/db.js';
 import fs from 'fs';
 import _ from 'lodash';
 import {uuidv7} from 'uuidv7';
@@ -272,6 +272,22 @@ const itemInfo = async (req, res) => {
   }
 };
 
+const getItemsSoft = async (req, res) => {
+  try {
+    if (!req.body.item) res.status(412).json({code: 0, message: 'Action required!'});
+    else {
+      let items = await Items.findAll({
+        attributes: ['name', 'image', 'id', 'price'],
+        where: {id: req.body.item}
+      });
+
+      res.json({code: 1, items});
+    }
+  } catch (e) {
+      res.status(500).json({code: 0, message: e.message});
+    }
+}
+
 /**
  * Get real price of items added to cart
  * 
@@ -433,6 +449,55 @@ const showCatItem = async (req, res) => {
   }
 };
 
+const wishlist = async (req, res) => {
+  try {
+    let items = await Wish.findAll({
+      attributes: [],
+      where: {userId: req.user.id},
+      include: [{
+        model: Items,
+        attributes: ['name', 'id', 'price', 'image']
+      }]
+    });
+
+    res.send({code: 1, items});
+  } catch (e) {
+    res.status(500).json({code: 0, message: e.message})
+  }
+};
+
+const addToWishlist = async (req, res) => {
+  console.log(req.user)
+  try {
+    if (!req.body.item) res.status(412).json({code: 0, message: 'Action required!'});
+    else {
+      let items = await Wish.create({
+        id: uuidv7(),
+        itemId: req.body.item,
+        userId: req.user.id
+      });
+  
+      res.send({code: 1, items});
+    }
+  } catch (e) {
+    res.status(500).json({code: 0, message: e.message})
+  }
+}
+const removeFromWishlist = async (req, res) => {
+  try {
+    if (!req.params.item) res.status(412).json({code: 0, message: 'Action required!'});
+    else {
+      let items = await Wish.destroy({
+        where: {id: req.params.item}
+      });
+  
+      res.send({code: 1, message: 'Item has been removed successfully!'});
+    }
+  } catch (e) {
+    res.status(500).json({code: 0, message: e.message})
+  }
+}
+
 /**
  * Get storeId
  * 
@@ -452,6 +517,6 @@ const getStoreId = async userId => {
 
 export default {
   create, discount, removeDiscount, discountAll, removeDiscountAll,
-  update, remove, topItem, itemInfo,
-  cart, orderItem, review, showCatItem
+  update, remove, topItem, itemInfo, cart, orderItem, review, showCatItem, 
+  getItemsSoft, wishlist, addToWishlist, removeFromWishlist
 };

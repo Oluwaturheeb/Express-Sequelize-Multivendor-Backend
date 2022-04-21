@@ -10,6 +10,7 @@ import address from '../models/address.js';
 import categories from '../models/categories.js';
 import reviews from '../models/reviews.js';
 import role from '../models/role.js';
+import wishlist from '../models/wishlist.js';
 
 export const seq = new Sequelize('multi', 'root', 'password', {
   dialect: 'postgres',
@@ -25,6 +26,7 @@ export const Items = seq.define('items', items(Store));
 export const Address = seq.define('address', address);
 export const Reviews = seq.define('reviews', reviews);
 export const Roles = seq.define('roles', role);
+export const Wish = seq.define('wishlist', wishlist);
 
 // associations
 // setup roles
@@ -64,5 +66,10 @@ Users.hasMany(Address);
 Orders.belongsTo(Users);
 Address.belongsTo(Users);
 
-// Reviews.sync({force: true});
+// get wishes
+Users.hasMany(Wish);
+Wish.belongsTo(Users);
+Items.hasOne(Wish);
+Wish.belongsTo(Items);
+
 export default seq;

@@ -1,6 +1,6 @@
 import { uuidv7 } from 'uuidv7';
 import app from '../conf/app.js';
-import {Items, Address, Orders, Store, Users} from '../conf/db.js';
+import {Items, Address, Orders, Store, Users, Wish} from '../conf/db.js';
 
 const profile = async (req, res) => {
   let user = req.user;
@@ -19,6 +19,12 @@ const profile = async (req, res) => {
       }]
     }, {
       model: Address
+    }, {
+      model: Wish,
+      include: [{
+        model: Items,
+        attributes: ['name', 'id']
+      }]
     }],
     limit: 30,
   });

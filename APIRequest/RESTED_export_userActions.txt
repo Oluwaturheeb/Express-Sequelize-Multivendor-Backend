@@ -3,6 +3,63 @@
   "name": "userActions",
   "requests": [
     {
+      "id": "2661ce38-d607-4133-84f4-4ce5cd6eeba1",
+      "collectionId": "2828eaa3-188b-4cd1-9a89-7bdef3ce02c1",
+      "method": "GET",
+      "url": "{{multi}}/item/wishlist",
+      "headers": "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODA0YjkwLTYwNWMtNzA5Zi05ZDVkLWZhODM4M2EyNzRlMiIsImVtYWlsIjoib2x1d2F0dXJoZWViQGdtYWlsLmNvbSIsIm5hbWUiOiJUb3AgVGVlIiwicGFzc3dvcmQiOiIkMmEkMTAkY3dTcEg5Mk40NkNxZ1pkNlZwNW1XdWpQRmVzZFJVVnhYQjAzLmRNRWRJMTc4UFo1U3prb1ciLCJhdmF0YXIiOm51bGwsInBob25lIjpudWxsLCJuYXRpb25hbGl0eSI6bnVsbCwidmVyaWZ5IjoiTk8iLCJhdXRoVHlwZSI6IkxPQ0FMIiwic3RhdHVzIjoiQUNUSVZFIiwiY3JlYXRlZEF0IjoiMjAyMi0wNC0yMVQwOTo1OTo1NC43MzRaIiwidXBkYXRlZEF0IjoiMjAyMi0wNC0yMVQwOTo1OTo1NC43MzRaIiwicm9sZSI6bnVsbCwiaWF0IjoxNjUwNTU4MTQ0fQ.qwhBr3sB23gWbq5qsadlZWZs9t-TCIQE2HeeXPBNy7M\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "item",
+          "value": "018047ec-6857-7cac-892f-b5c3473afab1",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "995208fa-7a4a-45f1-b32d-9ffcc8d35247",
+      "collectionId": "2828eaa3-188b-4cd1-9a89-7bdef3ce02c1",
+      "method": "POST",
+      "url": "{{multi}}/item/add-wishlist",
+      "headers": "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODA0YjkwLTYwNWMtNzA5Zi05ZDVkLWZhODM4M2EyNzRlMiIsImVtYWlsIjoib2x1d2F0dXJoZWViQGdtYWlsLmNvbSIsIm5hbWUiOiJUb3AgVGVlIiwicGFzc3dvcmQiOiIkMmEkMTAkY3dTcEg5Mk40NkNxZ1pkNlZwNW1XdWpQRmVzZFJVVnhYQjAzLmRNRWRJMTc4UFo1U3prb1ciLCJhdmF0YXIiOm51bGwsInBob25lIjpudWxsLCJuYXRpb25hbGl0eSI6bnVsbCwidmVyaWZ5IjoiTk8iLCJhdXRoVHlwZSI6IkxPQ0FMIiwic3RhdHVzIjoiQUNUSVZFIiwiY3JlYXRlZEF0IjoiMjAyMi0wNC0yMVQwOTo1OTo1NC43MzRaIiwidXBkYXRlZEF0IjoiMjAyMi0wNC0yMVQwOTo1OTo1NC43MzRaIiwicm9sZSI6bnVsbCwiaWF0IjoxNjUwNTU4MTQ0fQ.qwhBr3sB23gWbq5qsadlZWZs9t-TCIQE2HeeXPBNy7M\nContent-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "item",
+          "value": "018047ec-6857-7cac-892f-b5c3473afab1",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "41637824-21da-4717-83f0-411b5aa23e16",
+      "collectionId": "2828eaa3-188b-4cd1-9a89-7bdef3ce02c1",
+      "method": "POST",
+      "url": "{{multi}}/item/get-items",
+      "headers": "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODAzNzE5LTAxZWItNzk5Yi1hMDdlLTQ2Y2NmZTlmNzkzMCIsImVtYWlsIjoib2x1d2F0dXJoZWViQGdtYWlsLmNvbSIsIm5hbWUiOiJUb3AgVGVlIiwicGFzc3dvcmQiOiIkMmEkMTAkZmx0MlZ6Wi5Td3hGV3Z6V2JFTU41dWhDRUZvSHdxRjFYVFpERGpqZDlQeklzTEJvN2t0aUMiLCJhdmF0YXIiOm51bGwsInBob25lIjpudWxsLCJuYXRpb25hbGl0eSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyMi0wNC0xN1QxMDozNzowNy40NTBaIiwidXBkYXRlZEF0IjoiMjAyMi0wNC0xN1QxMDozNzowNy40NTBaIiwicm9sZSI6eyJyb2xlIjoidXNlciJ9LCJpYXQiOjE2NTAxOTE4ODV9.Zxj-IN_-SlROc87Q9jA7W-x--r3JbdF4GFC3KIUGrR4\nContent-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "item",
+          "value": "018047ee-780a-7dc0-b98f-ce1a4646c2f9",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "item",
+          "value": "018047ec-6857-7cac-892f-b5c3473afab1",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
       "id": "b7fa2ce4-b0ca-462c-94a1-3f3a3bb3f23f",
       "collectionId": "2828eaa3-188b-4cd1-9a89-7bdef3ce02c1",
       "method": "GET",
