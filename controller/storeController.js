@@ -5,7 +5,7 @@ import {uuidv7} from 'uuidv7';
 
 const createStore = async (req, res) => {
   try {
-    let userId = req.token.id,
+    let userId = req.user.id,
     id = uuidv7(),
     name = app.validate(req.body.name),
     email = app.validate(req.body.email),
@@ -25,7 +25,7 @@ const createStore = async (req, res) => {
       long, lat, nationality, avatar
     });
 
-    await Roles.update({role: 'store'}, {
+    await Roles.update({role: 'OWNER'}, {
       where: {userId}
     });
     
@@ -37,7 +37,7 @@ const createStore = async (req, res) => {
 };
 
 const dashboard = async (req, res) => {
-  let user = req.token;
+  let user = req.user;
   
   try {
     // get Items
@@ -67,17 +67,29 @@ const verify = async (req, res) => {
 };
 
 const getStore = async (req, res) => {
-  let store = app.validate(req.params.store);
+  try {
+    let store = req.params.store;
+    
+    if (store) {
+      store = app.validate(store);
+      let storeInfoAndItems = await Store.findOne({
+        where: {id: store, status: 'ACTIVE'},
+        include: Items
+      });
 
-  let storeInfoAndItems = await Store.findOne({
-    where: {id: store},
-    include: Items
-  });
+      if (!storeInfoAndItems) res.status(404).send({code: 0, message: 'Can not find the specified resources'});
+      else res.json({store: storeInfoAndItems});
+    } else {
+      let stores = await Store.findAll();
 
-  if (!storeInfoAndItems) res.status(404).send({code: 0, message: 'Can not find the specified resources'});
-  else res.json({store: storeInfoAndItems});
+      if (!stores) res.status(404).json({code: 0, message: 'Can not find the resource you are looking for!'});
+      else res.json({stores, code: 1});
+    }
+  } catch (e) {
+    res.status(500).json({code: 0, message: e.message})
+  }
 }
 
 export default {
-  createStore, dashboard, verify, getStore
+  createStore, dashboard, verify, getStore, 
 };

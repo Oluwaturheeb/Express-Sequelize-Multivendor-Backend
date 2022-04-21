@@ -9,11 +9,15 @@ const role = {
   userId: {
     type: DataTypes.UUID,
     references: {
-      model: 'users',
+      userId: 'users',
       allowNull: false
     }
   },
-  role: DataTypes.STRING,
+  role: {
+    type: DataTypes.ENUM('USER', 'OWNER', 'MODERATOR', 'ADMIN'),
+    defaultValue: 'USER',
+    allowNull: false
+  },
 };
 
 export default role;

@@ -1,0 +1,58 @@
+{
+  "id": "74c3c76a-3ac9-47e0-985c-53169bb097fb",
+  "name": "userAuth",
+  "requests": [
+    {
+      "id": "f18fed17-b863-43bc-8fb9-bbd40fc0af96",
+      "collectionId": "74c3c76a-3ac9-47e0-985c-53169bb097fb",
+      "method": "POST",
+      "url": "{{multi}}/auth/login",
+      "headers": "Content-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "email",
+          "value": "oluwaturheeb@gmail.com",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "password",
+          "value": "password",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "c7ff601c-89e1-4b01-881b-5c21241adf14",
+      "collectionId": "74c3c76a-3ac9-47e0-985c-53169bb097fb",
+      "method": "POST",
+      "url": "{{multi}}/auth/register",
+      "headers": "Content-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "name",
+          "value": "Top Tee",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "email",
+          "value": "oluwaturheeb@gmail.com",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "password",
+          "value": "password",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    }
+  ]
+}

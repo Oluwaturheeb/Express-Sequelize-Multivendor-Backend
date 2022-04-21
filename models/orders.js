@@ -9,22 +9,19 @@ const orders = {
   itemId: {
     type: DataTypes.UUID,
     validate: {
-      allowNull: false,
-      isUUID: true
+      // allowNull: false,
     }
   },
   userId: {
     type: DataTypes.UUID,
     validate: {
-      allowNull: false,
-      isUUID: true,
+      // allowNull: false,
     }
   },
   storeId: {
     type: DataTypes.UUID,
     validate: {
-      allowNull: false,
-      isUUID: true,
+      // allowNull: false,
     }
   },
   quantity: DataTypes.INTEGER,

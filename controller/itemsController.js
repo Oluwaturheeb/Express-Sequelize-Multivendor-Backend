@@ -23,7 +23,7 @@ import {uuidv7} from 'uuidv7';
  */
 const create = async (req, res) => {
   try {
-    let storeId = await getStoreId(req.token.id),
+    let storeId = await getStoreId(req.user.id),
     name = app.validate(req.body.name),
     price = app.validate(req.body.price),
     discount = app.validate(req.body.discount || '0'),
@@ -45,7 +45,7 @@ const create = async (req, res) => {
       id: uuidv7(),
       name, price, discount,
       description, warranty, available,
-      storeId, stock, image
+      storeId, stock, image, categoryId
     });
     
     if (newItem) res.json({code: 1, message: 'Item has been created successfully!', item: newItem});
@@ -127,7 +127,7 @@ const discountAll = async (req, res) => {
       let item = await Items.update({
         discount
       }, {
-        where: {storeId: await getStoreId(req.token.id)}
+        where: {storeId: await getStoreId(req.user.id)}
       });
       
       if (!item) res.json({code: 0, message: 'Can not find the item specified!'});
@@ -150,7 +150,7 @@ const removeDiscountAll = async (req, res) => {
     let item = await Items.update({
       discount: 0
     }, {
-      where: {storeId: await getStoreId(req.token.id)}
+      where: {storeId: await getStoreId(req.user.id)}
     });
     
     res.json({code: 1, message: 'Discount has been removed from all items!'});
@@ -294,16 +294,18 @@ const cart = async (req, res) => {
     });
 
     // calculate items with the quantity
-    if (item.length > 1)
-      var prices = _.sum(item.map(a => {
-        let getQuantityIndex = req.body.item.indexOf(a.id)
-        q = req.body.quantity[getQuantityIndex] || 1;
-        return a.price * q;
-      }));
-    else 
-      prices = item[0].price * q;
+    if (item.length) {
+      if (item.length > 1)
+        var prices = _.sum(item.map(a => {
+          let getQuantityIndex = req.body.item.indexOf(a.id)
+          q = req.body.quantity[getQuantityIndex] || 1;
+          return a.price * q;
+        }));
+      else 
+        prices = item[0].price * q;
 
-    res.json({item, prices});
+      res.json({item, prices});
+    } else res.sendStatus(404);
   } catch (e) {
     res.status(500).send(e.message)
   }
@@ -319,40 +321,49 @@ const cart = async (req, res) => {
  
 const orderItem = async (req, res) => {
   try {
-    let user = req.token,
+    let user = req.user,
     item = req.body.item,
-    getStoreId = await Items.findAll({
-      attributes: ['storeId', 'id'],
+    storeId = await Items.findAll({
+      attributes: ['storeId', 'id', 'topItem'],
       where: {id: item},
       raw: true,
     });
     
-    if (typeof item == 'object') {
-      item = item.map((i, index)  => ({
-        id: uuidv7(),
-        itemId: i,
-        storeId: (() => {
-          return getStoreId.filter(s => i !== s.id)[0].storeId;
-        })(),
-        userId: user.id,
-        quantity: req.body.quantity[index],
-        amount: req.body.amount[index],
-      }));
-      
-      item = await Orders.bulkCreate(item);
-    } else {
-      item = await Orders.create({
-        id: uuidv7(),
-        itemId: item,
-        userId: user.id,
-        storeId: getStoreId.storeId,
-        quantity: req.body.quantity,
-        amount: req.body.amount
-      });
+    if (!storeId) res.status(404).send({code: 0, message: 'Can not the the specified item!'});
+    else {
+      // REFUSE GETTING ORDER FROM ITEM OWNERS
+      if (user.role.role == 'OWNER') {
+        if (storeId.indexOf(await getStoreId(user.id))) res.status(412).json({code: 0, message: 'You cannot order items from your own store'});
+      } else {
+        if (typeof item == 'object') {
+          let filter = item => storeId.filter(s => i !== s.id)[0].item;
+          item = item.map((i, index)  => ({
+            id: uuidv7(),
+            itemId: i,
+            storeId: filter('storeId'),
+            topItem: filter('topItem'),
+            userId: user.id,
+            quantity: req.body.quantity[index],
+            amount: req.body.amount[index],
+          }));
+          
+          item = await Orders.bulkCreate(item);
+        } else {
+            item = await Orders.create({
+              id: uuidv7(),
+              itemId: item,
+              userId: user.id,
+              storeId: storeId[0].storeId,
+              topItem: storeId[0].topItem,
+              quantity: req.body.quantity,
+              amount: req.body.amount
+            });
+        }
+        
+        if (!item) res.json({code: 0, message: 'Unknown error!'});
+        else res.json({code: 1, message: 'Order has been created!'});
+      }
     }
-    
-    if (!item) res.json({code: 0, message: 'Unknown error!'});
-    else res.json({code: 1, message: 'Order has been created!'});
   } catch (e) {
     res.status(500).send({code: 0, message: e.message});
   }
@@ -367,21 +378,60 @@ const orderItem = async (req, res) => {
  
 const review = async (req, res) => {
   try {
-    let userId = req.token.id,
-    itemId = app.validate(req.body.item),
-    content = app.validate(req.body.content),
-    rating = app.validate(req.body.rating);
+    if (req.user.role.role == 'OWNER') {
+      // refuse review from item owner
+      let ownerStore = await getStoreId(req.user.id);
+      let validate = await Items.findOne({
+        attributes: ['id'],
+        where: {
+          storeId: ownerStore,
+          id: req.body.item
+        }
+      });
 
-    let rev = await Reviews.create({
-      id: uuidv7(), content, rating, userId, itemId
-    });
-
-    if (!rev) res.json({code: 0, message: 'Unknown error!'});
-    else res.json({code: 1, message: 'Reviews has been submitted!'});
+      if (validate) res.status(412).json({code: 0, message: 'You can not submit reviews for your store'});
+    } else {
+      let userId = req.user.id,
+        itemId = app.validate(req.body.item),
+        content = app.validate(req.body.content),
+        rating = app.validate(req.body.rating);
+  
+      let rev = await Reviews.create({
+        id: uuidv7(), content, rating, userId, itemId
+      });
+  
+      if (!rev) res.json({code: 0, message: 'Unknown error!'});
+      else res.json({code: 1, message: 'Reviews has been submitted!'});
+    }
   } catch (e) {
-    res.send(e.message);
+    res.status(412).json({code: 0, message: 'You have already submitted a review for this item!' + e.message});
   }
 }
+
+const showCatItem = async (req, res) => {
+  try {
+    let id = req.body.id,
+      query = {
+        attributes: ['name', 'image'],
+        include: [{
+          model: Items,
+          attributes: ['name', 'price', 'image', 'topItem'],
+          include: [{
+            model: Store,
+            attributes: ['name', 'id']
+          }]
+        }],
+        where: {id: (id)? app.validate(id): null}
+      };
+
+    if (!id) delete query.where;
+    let getCatItems = await Categories.findOne(query);
+
+      res.json({code: 1, items: getCatItems});
+  } catch (e) {
+    res.status(500).json({code: 0, message: e.message});
+  }
+};
 
 /**
  * Get storeId
@@ -403,5 +453,5 @@ const getStoreId = async userId => {
 export default {
   create, discount, removeDiscount, discountAll, removeDiscountAll,
   update, remove, topItem, itemInfo,
-  cart, orderItem, review
+  cart, orderItem, review, showCatItem
 };

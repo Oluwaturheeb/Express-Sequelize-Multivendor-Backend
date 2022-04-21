@@ -11,16 +11,22 @@ const app = {
     return sign;
   },
   verifyMiddleware: async (req, res, next) => {
-    
     try {
       let token = req.headers.authorization.split(' ')[1];
       if (!token) res.sendStatus(403);
       let check = await jwt.verify(token, process.env.JWTSECRET);
       
       if (!check) res.sendStatus(403);
-      else req.token = check; next();
+      else req.user = check; next();
     } catch (e) {
       res.sendStatus(403);
+    }
+  },
+  isAdmin: (req, res, next) => {
+    if (!req.user) res.sendStatus(403);
+    else {
+      if (req.user.role.role === 'USER') res.sendStatus(403);
+      else next();
     }
   },
   mail: (data, type) => {

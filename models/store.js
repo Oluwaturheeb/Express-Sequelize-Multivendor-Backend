@@ -26,6 +26,10 @@ const store = {
     type: DataTypes.ENUM('0', '1'),
     defaultValue: '0',
   },
+  status: {
+    type: DataTypes.ENUM('ACTIVE', 'BLOCKED'),
+    defaultValue: 'ACTIVE'
+  }
 };
 
 export default store;

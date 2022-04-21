@@ -1,0 +1,241 @@
+{
+  "id": "2828eaa3-188b-4cd1-9a89-7bdef3ce02c1",
+  "name": "userActions",
+  "requests": [
+    {
+      "id": "b7fa2ce4-b0ca-462c-94a1-3f3a3bb3f23f",
+      "collectionId": "2828eaa3-188b-4cd1-9a89-7bdef3ce02c1",
+      "method": "GET",
+      "url": "{{multi}}/store/018047e1-dabf-7d81-996d-2ef18a21124c",
+      "headers": "\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "",
+          "value": "",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "b86a4845-4849-4eff-83fe-507499f4cafc",
+      "collectionId": "2828eaa3-188b-4cd1-9a89-7bdef3ce02c1",
+      "method": "GET",
+      "url": "{{multi}}/store",
+      "headers": "\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "",
+          "value": "",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "4ff18f28-7da6-4a2d-bffd-09585bf68672",
+      "collectionId": "2828eaa3-188b-4cd1-9a89-7bdef3ce02c1",
+      "method": "DELETE",
+      "url": "{{multi}}/user/delete-address/01804ba8-bd81-7583-a641-98a3a51bc20d",
+      "headers": "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODA0YjkwLTYwNWMtNzA5Zi05ZDVkLWZhODM4M2EyNzRlMiIsImVtYWlsIjoib2x1d2F0dXJoZWViQGdtYWlsLmNvbSIsIm5hbWUiOiJUb3AgVGVlIiwicGFzc3dvcmQiOiIkMmEkMTAkY3dTcEg5Mk40NkNxZ1pkNlZwNW1XdWpQRmVzZFJVVnhYQjAzLmRNRWRJMTc4UFo1U3prb1ciLCJhdmF0YXIiOm51bGwsInBob25lIjpudWxsLCJuYXRpb25hbGl0eSI6bnVsbCwidmVyaWZ5IjoiTk8iLCJhdXRoVHlwZSI6IkxPQ0FMIiwic3RhdHVzIjoiQUNUSVZFIiwiY3JlYXRlZEF0IjoiMjAyMi0wNC0yMVQwOTo1OTo1NC43MzRaIiwidXBkYXRlZEF0IjoiMjAyMi0wNC0yMVQwOTo1OTo1NC43MzRaIiwicm9sZSI6eyJyb2xlIjoiVVNFUiJ9LCJpYXQiOjE2NTA1MzUyMDJ9.xTke_CCY-Sf0Zovmqh7vRRz3FDFpC3_ULrm-5H1XsOk\n",
+      "dataMode": "urlencoded",
+      "data": [],
+      "rawModeData": []
+    },
+    {
+      "id": "299b8ca7-66b4-4abb-ab6c-b12471b135c2",
+      "collectionId": "2828eaa3-188b-4cd1-9a89-7bdef3ce02c1",
+      "method": "POST",
+      "url": "{{multi}}/user/address",
+      "headers": "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODA0YjkwLTYwNWMtNzA5Zi05ZDVkLWZhODM4M2EyNzRlMiIsImVtYWlsIjoib2x1d2F0dXJoZWViQGdtYWlsLmNvbSIsIm5hbWUiOiJUb3AgVGVlIiwicGFzc3dvcmQiOiIkMmEkMTAkY3dTcEg5Mk40NkNxZ1pkNlZwNW1XdWpQRmVzZFJVVnhYQjAzLmRNRWRJMTc4UFo1U3prb1ciLCJhdmF0YXIiOm51bGwsInBob25lIjpudWxsLCJuYXRpb25hbGl0eSI6bnVsbCwidmVyaWZ5IjoiTk8iLCJhdXRoVHlwZSI6IkxPQ0FMIiwic3RhdHVzIjoiQUNUSVZFIiwiY3JlYXRlZEF0IjoiMjAyMi0wNC0yMVQwOTo1OTo1NC43MzRaIiwidXBkYXRlZEF0IjoiMjAyMi0wNC0yMVQwOTo1OTo1NC43MzRaIiwicm9sZSI6eyJyb2xlIjoiVVNFUiJ9LCJpYXQiOjE2NTA1MzUyMDJ9.xTke_CCY-Sf0Zovmqh7vRRz3FDFpC3_ULrm-5H1XsOk\nContent-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "address",
+          "value": "No 13, Riverside Estate, Ogunrun Phase 1, Mowe",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "city",
+          "value": "Mowe/Ibafo",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "lga",
+          "value": "Obafemi/Owode",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "16f26230-195b-41ad-97d1-b9c42fc44835",
+      "collectionId": "2828eaa3-188b-4cd1-9a89-7bdef3ce02c1",
+      "method": "POST",
+      "url": "{{multi}}/item/order",
+      "headers": "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODAzNzE5LTAxZWItNzk5Yi1hMDdlLTQ2Y2NmZTlmNzkzMCIsImVtYWlsIjoib2x1d2F0dXJoZWViQGdtYWlsLmNvbSIsIm5hbWUiOiJUb3AgVGVlIiwicGFzc3dvcmQiOiIkMmEkMTAkZmx0MlZ6Wi5Td3hGV3Z6V2JFTU41dWhDRUZvSHdxRjFYVFpERGpqZDlQeklzTEJvN2t0aUMiLCJhdmF0YXIiOm51bGwsInBob25lIjpudWxsLCJuYXRpb25hbGl0eSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyMi0wNC0xN1QxMDozNzowNy40NTBaIiwidXBkYXRlZEF0IjoiMjAyMi0wNC0xN1QxMDozNzowNy40NTBaIiwicm9sZSI6eyJyb2xlIjoidXNlciJ9LCJpYXQiOjE2NTAxOTE4ODV9.Zxj-IN_-SlROc87Q9jA7W-x--r3JbdF4GFC3KIUGrR4\nContent-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "item",
+          "value": "01804190-2f69-7e30-842d-1178780ff547",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "quantity",
+          "value": "50",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "amount",
+          "value": "150000",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "c539865d-9e2b-4e8f-b2e5-e775f8f2efb4",
+      "collectionId": "2828eaa3-188b-4cd1-9a89-7bdef3ce02c1",
+      "method": "POST",
+      "url": "{{multi}}/item/cart",
+      "headers": "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODAzNzE5LTAxZWItNzk5Yi1hMDdlLTQ2Y2NmZTlmNzkzMCIsImVtYWlsIjoib2x1d2F0dXJoZWViQGdtYWlsLmNvbSIsIm5hbWUiOiJUb3AgVGVlIiwicGFzc3dvcmQiOiIkMmEkMTAkZmx0MlZ6Wi5Td3hGV3Z6V2JFTU41dWhDRUZvSHdxRjFYVFpERGpqZDlQeklzTEJvN2t0aUMiLCJhdmF0YXIiOm51bGwsInBob25lIjpudWxsLCJuYXRpb25hbGl0eSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyMi0wNC0xN1QxMDozNzowNy40NTBaIiwidXBkYXRlZEF0IjoiMjAyMi0wNC0xN1QxMDozNzowNy40NTBaIiwicm9sZSI6eyJyb2xlIjoidXNlciJ9LCJpYXQiOjE2NTAxOTE4ODV9.Zxj-IN_-SlROc87Q9jA7W-x--r3JbdF4GFC3KIUGrR4\nContent-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "item",
+          "value": "01803726-fe33-7f77-9136-412434cf7145",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "item",
+          "value": "018036cf-676f-7828-b744-40668269b02c",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "quantity",
+          "value": "20",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "quantity",
+          "value": "6",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "d42e1d06-6283-4152-baeb-4ef2bd327617",
+      "collectionId": "2828eaa3-188b-4cd1-9a89-7bdef3ce02c1",
+      "method": "POST",
+      "url": "{{multi}}/item/review",
+      "headers": "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODAzNzE5LTAxZWItNzk5Yi1hMDdlLTQ2Y2NmZTlmNzkzMCIsImVtYWlsIjoib2x1d2F0dXJoZWViQGdtYWlsLmNvbSIsIm5hbWUiOiJUb3AgVGVlIiwicGFzc3dvcmQiOiIkMmEkMTAkZmx0MlZ6Wi5Td3hGV3Z6V2JFTU41dWhDRUZvSHdxRjFYVFpERGpqZDlQeklzTEJvN2t0aUMiLCJhdmF0YXIiOm51bGwsInBob25lIjpudWxsLCJuYXRpb25hbGl0eSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyMi0wNC0xN1QxMDozNzowNy40NTBaIiwidXBkYXRlZEF0IjoiMjAyMi0wNC0xN1QxMDozNzowNy40NTBaIiwicm9sZSI6eyJyb2xlIjoidXNlciJ9LCJpYXQiOjE2NTAxOTE4ODV9.Zxj-IN_-SlROc87Q9jA7W-x--r3JbdF4GFC3KIUGrR4\nContent-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "item",
+          "value": "018047ee-780a-7dc0-b98f-ce1a4646c2f9",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "content",
+          "value": "This is an amazing product",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "rating",
+          "value": "5",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "111e40ee-329f-48a8-85d5-5eaf198919f3",
+      "collectionId": "2828eaa3-188b-4cd1-9a89-7bdef3ce02c1",
+      "method": "GET",
+      "url": "{{multi}}/item/get-item/018047ee-780a-7dc0-b98f-ce1a4646c2f9",
+      "headers": "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODAzNzE5LTAxZWItNzk5Yi1hMDdlLTQ2Y2NmZTlmNzkzMCIsImVtYWlsIjoib2x1d2F0dXJoZWViQGdtYWlsLmNvbSIsIm5hbWUiOiJUb3AgVGVlIiwicGFzc3dvcmQiOiIkMmEkMTAkZmx0MlZ6Wi5Td3hGV3Z6V2JFTU41dWhDRUZvSHdxRjFYVFpERGpqZDlQeklzTEJvN2t0aUMiLCJhdmF0YXIiOm51bGwsInBob25lIjpudWxsLCJuYXRpb25hbGl0eSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyMi0wNC0xN1QxMDozNzowNy40NTBaIiwidXBkYXRlZEF0IjoiMjAyMi0wNC0xN1QxMDozNzowNy40NTBaIiwicm9sZSI6eyJyb2xlIjoidXNlciJ9LCJpYXQiOjE2NTAxOTE4ODV9.Zxj-IN_-SlROc87Q9jA7W-x--r3JbdF4GFC3KIUGrR4\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "email",
+          "value": "oluwaturheeb@gmail.com",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "password",
+          "value": "password",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "8452c698-881f-4c93-939b-e0ab20a3e094",
+      "collectionId": "2828eaa3-188b-4cd1-9a89-7bdef3ce02c1",
+      "method": "GET",
+      "url": "{{multi}}",
+      "headers": "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODA0YjkwLTYwNWMtNzA5Zi05ZDVkLWZhODM4M2EyNzRlMiIsImVtYWlsIjoib2x1d2F0dXJoZWViQGdtYWlsLmNvbSIsIm5hbWUiOiJUb3AgVGVlIiwicGFzc3dvcmQiOiIkMmEkMTAkY3dTcEg5Mk40NkNxZ1pkNlZwNW1XdWpQRmVzZFJVVnhYQjAzLmRNRWRJMTc4UFo1U3prb1ciLCJhdmF0YXIiOm51bGwsInBob25lIjpudWxsLCJuYXRpb25hbGl0eSI6bnVsbCwidmVyaWZ5IjoiTk8iLCJhdXRoVHlwZSI6IkxPQ0FMIiwic3RhdHVzIjoiQUNUSVZFIiwiY3JlYXRlZEF0IjoiMjAyMi0wNC0yMVQwOTo1OTo1NC43MzRaIiwidXBkYXRlZEF0IjoiMjAyMi0wNC0yMVQwOTo1OTo1NC43MzRaIiwicm9sZSI6eyJyb2xlIjoiVVNFUiJ9LCJpYXQiOjE2NTA1MzUyMDJ9.xTke_CCY-Sf0Zovmqh7vRRz3FDFpC3_ULrm-5H1XsOk\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "email",
+          "value": "oluwaturheeb@gmail.com",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "password",
+          "value": "password",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "932d0c40-7b5c-4c66-b87c-888114d406b4",
+      "collectionId": "2828eaa3-188b-4cd1-9a89-7bdef3ce02c1",
+      "method": "GET",
+      "url": "{{multi}}/user/dashboard",
+      "headers": "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODAzNzE5LTAxZWItNzk5Yi1hMDdlLTQ2Y2NmZTlmNzkzMCIsImVtYWlsIjoib2x1d2F0dXJoZWViQGdtYWlsLmNvbSIsIm5hbWUiOiJUb3AgVGVlIiwicGFzc3dvcmQiOiIkMmEkMTAkZmx0MlZ6Wi5Td3hGV3Z6V2JFTU41dWhDRUZvSHdxRjFYVFpERGpqZDlQeklzTEJvN2t0aUMiLCJhdmF0YXIiOm51bGwsInBob25lIjpudWxsLCJuYXRpb25hbGl0eSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyMi0wNC0xN1QxMDozNzowNy40NTBaIiwidXBkYXRlZEF0IjoiMjAyMi0wNC0xN1QxMDozNzowNy40NTBaIiwicm9sZSI6eyJyb2xlIjoidXNlciJ9LCJpYXQiOjE2NTAxOTE4ODV9.Zxj-IN_-SlROc87Q9jA7W-x--r3JbdF4GFC3KIUGrR4\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "email",
+          "value": "oluwaturheeb@gmail.com",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "password",
+          "value": "password",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    }
+  ]
+}

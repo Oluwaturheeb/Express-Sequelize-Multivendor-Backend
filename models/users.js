@@ -27,14 +27,18 @@ const users = {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  /* verify: {
+  verify: {
     type: DataTypes.ENUM('NO', 'YES'),
     defaultValue: 'NO',
   },
   authType: {
     type: DataTypes.ENUM('LOCAL', 'SOCIAL'),
     defaultValue: 'LOCAL'
-  } */
+  },
+  status: {
+    type: DataTypes.ENUM('ACTIVE', 'BLOCKED'),
+    defaultValue: 'ACTIVE'
+  }
 };
 
 export default users;

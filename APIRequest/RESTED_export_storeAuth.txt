@@ -1,0 +1,58 @@
+{
+  "id": "92e7b1f7-836b-4ea6-9b10-00619443e71c",
+  "name": "storeAuth",
+  "requests": [
+    {
+      "id": "fd52215e-bc8b-46d6-b1cc-55c7be358d7c",
+      "collectionId": "92e7b1f7-836b-4ea6-9b10-00619443e71c",
+      "method": "POST",
+      "url": "{{multi}}/auth/login",
+      "headers": "Content-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "email",
+          "value": "devtee@gmail.com",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "password",
+          "value": "password",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "778a4b81-b36b-47e6-995e-8b2950e6113a",
+      "collectionId": "92e7b1f7-836b-4ea6-9b10-00619443e71c",
+      "method": "POST",
+      "url": "{{multi}}/auth/register",
+      "headers": "Content-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "name",
+          "value": "Bello Toheeb",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "email",
+          "value": "devtee@gmail.com",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "password",
+          "value": "password",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    }
+  ]
+}

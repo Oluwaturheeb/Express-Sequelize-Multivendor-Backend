@@ -15,6 +15,7 @@ import usersRouter from './routes/users.js';
 import authRouter from './routes/auth.js';
 import itemRouter from './routes/items.js';
 import storeRouter from './routes/store.js';
+import adminRouter from './routes/admin.js';
 
 const app = express();
 app.use(logger('dev'));
@@ -30,6 +31,6 @@ app.use('/user', usersRouter);
 app.use('/auth', authRouter);
 app.use('/item', itemRouter);
 app.use('/store', storeRouter);
-
+app.use('/admin', adminRouter);
 
 app.listen(process.env.PORT || 3000);

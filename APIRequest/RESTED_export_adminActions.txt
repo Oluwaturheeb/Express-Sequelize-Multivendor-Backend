@@ -1,0 +1,46 @@
+{
+  "id": "0c7da9ad-232f-4fd3-a0db-14957488267d",
+  "name": "adminActions",
+  "requests": [
+    {
+      "id": "043f769b-fc97-4465-a763-7f3c6b0fcd52",
+      "collectionId": "0c7da9ad-232f-4fd3-a0db-14957488267d",
+      "method": "POST",
+      "url": "{{multi}}/admin/category",
+      "headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODA0N2QzLWQ4MWItNzNlZi05MWMyLTk2MDdmYmI0Y2ZlYiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwibmFtZSI6IkFkbWluIiwicGFzc3dvcmQiOiIkMmEkMTAkLmtZS1F2L2RsRXU1M3RNOVd1SHBCT3o1MGlGTkpZTWh6ZWZIU0sxZ3Q1RmNOLjAxS3IwVWUiLCJhdmF0YXIiOm51bGwsInBob25lIjpudWxsLCJuYXRpb25hbGl0eSI6bnVsbCwidmVyaWZ5IjoiTk8iLCJhdXRoVHlwZSI6IkxPQ0FMIiwic3RhdHVzIjoiQUNUSVZFIiwiY3JlYXRlZEF0IjoiMjAyMi0wNC0yMFQxNjozNTowNy45NTVaIiwidXBkYXRlZEF0IjoiMjAyMi0wNC0yMFQxNjozNTowNy45NTVaIiwicm9sZSI6eyJyb2xlIjoiQURNSU4ifSwiaWF0IjoxNjUwNDczNjM4fQ.MIsmWJRmYgXe1WtQ76-xlu-D-Xh5Jq06EvV5v_2Q1dg\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "name",
+          "value": "Food",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "9e940606-7826-4e4e-8b34-eaeca2143d85",
+      "collectionId": "0c7da9ad-232f-4fd3-a0db-14957488267d",
+      "method": "GET",
+      "url": "{{multi}}/admin/dashboard",
+      "headers": "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODAzNmJkLWZjZDEtNzgxOS1iNDljLTRmNDVjMDBkNjQ5NiIsImVtYWlsIjoiZGV2dGVlQGdtYWlsLmNvbSIsIm5hbWUiOiJCZWxsbyBUb2hlZWIiLCJwYXNzd29yZCI6IiQyYSQxMCRBNTBNME1xMDIuUWFsWm1nRndxSmh1dXhjNDM4ZFFUNUpKUFVrM3hLQ3E4WWRQbHZhdXRrUyIsImF2YXRhciI6bnVsbCwicGhvbmUiOm51bGwsIm5hdGlvbmFsaXR5IjpudWxsLCJjcmVhdGVkQXQiOiIyMDIyLTA0LTE3VDA4OjU3OjQyLjM2NFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTA0LTE3VDA4OjU3OjQyLjM2NFoiLCJyb2xlIjp7InJvbGUiOiJzdG9yZSJ9LCJpYXQiOjE2NTAxOTIwNjV9.GqJpcgLspx5qT9h3yR7kZGgD4g5VrS8PgvZRxyLfSAk\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "item",
+          "value": "01803726-fe33-7f77-9136-412434cf7145",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "action",
+          "value": "1",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    }
+  ]
+}

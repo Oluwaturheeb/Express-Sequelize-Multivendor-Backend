@@ -1,0 +1,268 @@
+{
+  "id": "71882162-328d-471a-a2a0-1e16f1232e22",
+  "name": "storeActions",
+  "requests": [
+    {
+      "id": "fd0a498d-8ba2-4664-b8c4-17d146e7fa32",
+      "collectionId": "71882162-328d-471a-a2a0-1e16f1232e22",
+      "method": "POST",
+      "url": "{{multi}}/item/create",
+      "headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODA0N2UxLTAyOWItNzUwMS05MTk4LWEzOThlZDA2MzI1OCIsImVtYWlsIjoiZGV2dGVlQGdtYWlsLmNvbSIsIm5hbWUiOiJCZWxsbyBUb2hlZWIiLCJwYXNzd29yZCI6IiQyYSQxMCQzNGFzeFZqb2lhVC9hRkUubEVxZ28udDZMV0R5eHJESWZ0R283Ry9tU282TU9Bek9TdTAwaSIsImF2YXRhciI6bnVsbCwicGhvbmUiOm51bGwsIm5hdGlvbmFsaXR5IjpudWxsLCJ2ZXJpZnkiOiJOTyIsImF1dGhUeXBlIjoiTE9DQUwiLCJzdGF0dXMiOiJBQ1RJVkUiLCJjcmVhdGVkQXQiOiIyMDIyLTA0LTIwVDE2OjQ5OjMwLjI3NloiLCJ1cGRhdGVkQXQiOiIyMDIyLTA0LTIwVDE2OjQ5OjMwLjI3NloiLCJyb2xlIjp7InJvbGUiOiJVU0VSIn0sImlhdCI6MTY1MDQ3MzM5MX0.L9UD-0FRf8UEDbO3bmJ1i_F-kN_p3mwFXHH4rezu-so\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "name",
+          "value": "Beans",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "price",
+          "value": "2200",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "description",
+          "value": "Super beans from kano",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "stock",
+          "value": "10000",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "categoryId",
+          "value": "018047e6-88a7-7792-933d-6390f5944270",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "2228fd32-10a0-4596-aa5a-eedefbcaa9d1",
+      "collectionId": "71882162-328d-471a-a2a0-1e16f1232e22",
+      "method": "POST",
+      "url": "{{multi}}/item/top-item",
+      "headers": "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODAzNmJkLWZjZDEtNzgxOS1iNDljLTRmNDVjMDBkNjQ5NiIsImVtYWlsIjoiZGV2dGVlQGdtYWlsLmNvbSIsIm5hbWUiOiJCZWxsbyBUb2hlZWIiLCJwYXNzd29yZCI6IiQyYSQxMCRBNTBNME1xMDIuUWFsWm1nRndxSmh1dXhjNDM4ZFFUNUpKUFVrM3hLQ3E4WWRQbHZhdXRrUyIsImF2YXRhciI6bnVsbCwicGhvbmUiOm51bGwsIm5hdGlvbmFsaXR5IjpudWxsLCJjcmVhdGVkQXQiOiIyMDIyLTA0LTE3VDA4OjU3OjQyLjM2NFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTA0LTE3VDA4OjU3OjQyLjM2NFoiLCJyb2xlIjp7InJvbGUiOiJzdG9yZSJ9LCJpYXQiOjE2NTAxOTIwNjV9.GqJpcgLspx5qT9h3yR7kZGgD4g5VrS8PgvZRxyLfSAk\nContent-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "item",
+          "value": "01803726-fe33-7f77-9136-412434cf7145",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "action",
+          "value": "1",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "b819da4f-100a-4314-9fa2-e6c539dbffb0",
+      "collectionId": "71882162-328d-471a-a2a0-1e16f1232e22",
+      "method": "POST",
+      "url": "{{multi}}/item/remove-discount",
+      "headers": "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODAzNmJkLWZjZDEtNzgxOS1iNDljLTRmNDVjMDBkNjQ5NiIsImVtYWlsIjoiZGV2dGVlQGdtYWlsLmNvbSIsIm5hbWUiOiJCZWxsbyBUb2hlZWIiLCJwYXNzd29yZCI6IiQyYSQxMCRBNTBNME1xMDIuUWFsWm1nRndxSmh1dXhjNDM4ZFFUNUpKUFVrM3hLQ3E4WWRQbHZhdXRrUyIsImF2YXRhciI6bnVsbCwicGhvbmUiOm51bGwsIm5hdGlvbmFsaXR5IjpudWxsLCJjcmVhdGVkQXQiOiIyMDIyLTA0LTE3VDA4OjU3OjQyLjM2NFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTA0LTE3VDA4OjU3OjQyLjM2NFoiLCJyb2xlIjp7InJvbGUiOiJzdG9yZSJ9LCJpYXQiOjE2NTAxOTIwNjV9.GqJpcgLspx5qT9h3yR7kZGgD4g5VrS8PgvZRxyLfSAk\nContent-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "id",
+          "value": "01803726-fe33-7f77-9136-412434cf7145",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "1436365b-626e-42a8-87d6-a92f959188a4",
+      "collectionId": "71882162-328d-471a-a2a0-1e16f1232e22",
+      "method": "POST",
+      "url": "{{multi}}/item/discount",
+      "headers": "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODAzNmJkLWZjZDEtNzgxOS1iNDljLTRmNDVjMDBkNjQ5NiIsImVtYWlsIjoiZGV2dGVlQGdtYWlsLmNvbSIsIm5hbWUiOiJCZWxsbyBUb2hlZWIiLCJwYXNzd29yZCI6IiQyYSQxMCRBNTBNME1xMDIuUWFsWm1nRndxSmh1dXhjNDM4ZFFUNUpKUFVrM3hLQ3E4WWRQbHZhdXRrUyIsImF2YXRhciI6bnVsbCwicGhvbmUiOm51bGwsIm5hdGlvbmFsaXR5IjpudWxsLCJjcmVhdGVkQXQiOiIyMDIyLTA0LTE3VDA4OjU3OjQyLjM2NFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTA0LTE3VDA4OjU3OjQyLjM2NFoiLCJyb2xlIjp7InJvbGUiOiJzdG9yZSJ9LCJpYXQiOjE2NTAxOTIwNjV9.GqJpcgLspx5qT9h3yR7kZGgD4g5VrS8PgvZRxyLfSAk\nContent-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "id",
+          "value": "01803726-fe33-7f77-9136-412434cf7145",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "discount",
+          "value": "30",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "b291b701-1e4b-4eb9-ac7b-aaf1da5a47df",
+      "collectionId": "71882162-328d-471a-a2a0-1e16f1232e22",
+      "method": "POST",
+      "url": "{{multi}}/item/discount-all",
+      "headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODAzNmJkLWZjZDEtNzgxOS1iNDljLTRmNDVjMDBkNjQ5NiIsImVtYWlsIjoiZGV2dGVlQGdtYWlsLmNvbSIsIm5hbWUiOiJCZWxsbyBUb2hlZWIiLCJwYXNzd29yZCI6IiQyYSQxMCRBNTBNME1xMDIuUWFsWm1nRndxSmh1dXhjNDM4ZFFUNUpKUFVrM3hLQ3E4WWRQbHZhdXRrUyIsImF2YXRhciI6bnVsbCwicGhvbmUiOm51bGwsIm5hdGlvbmFsaXR5IjpudWxsLCJjcmVhdGVkQXQiOiIyMDIyLTA0LTE3VDA4OjU3OjQyLjM2NFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTA0LTE3VDA4OjU3OjQyLjM2NFoiLCJyb2xlIjp7InJvbGUiOiJzdG9yZSJ9LCJpYXQiOjE2NTAxOTQwNDh9.x5j7S9eu-yB42FbaJkhZa9KW17Mbtzk6mmf3uK9ftRo\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "discount",
+          "value": "25",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "5c34105f-9963-40e0-b386-dce21879cd22",
+      "collectionId": "71882162-328d-471a-a2a0-1e16f1232e22",
+      "method": "POST",
+      "url": "{{multi}}/item/create",
+      "headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODAzNmJkLWZjZDEtNzgxOS1iNDljLTRmNDVjMDBkNjQ5NiIsImVtYWlsIjoiZGV2dGVlQGdtYWlsLmNvbSIsIm5hbWUiOiJCZWxsbyBUb2hlZWIiLCJwYXNzd29yZCI6IiQyYSQxMCRBNTBNME1xMDIuUWFsWm1nRndxSmh1dXhjNDM4ZFFUNUpKUFVrM3hLQ3E4WWRQbHZhdXRrUyIsImF2YXRhciI6bnVsbCwicGhvbmUiOm51bGwsIm5hdGlvbmFsaXR5IjpudWxsLCJjcmVhdGVkQXQiOiIyMDIyLTA0LTE3VDA4OjU3OjQyLjM2NFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTA0LTE3VDA4OjU3OjQyLjM2NFoiLCJyb2xlIjp7InJvbGUiOiJzdG9yZSJ9LCJpYXQiOjE2NTAxOTM2NzN9.Y2ODyPVonlSxw9mvumXzimL4yJiY-lVG__56v5MKiR0\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "name",
+          "value": "Electronic Hand Fan",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "price",
+          "value": "3000",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "discount",
+          "value": "14",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "description",
+          "value": "An electronic rechargeable hand fan",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "stock",
+          "value": "200",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "categoryId",
+          "value": "1",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "308ae3ba-0141-4f2d-a578-7722456e5f08",
+      "collectionId": "71882162-328d-471a-a2a0-1e16f1232e22",
+      "method": "GET",
+      "url": "{{multi}}/store/dashboard",
+      "headers": "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODAzNmJkLWZjZDEtNzgxOS1iNDljLTRmNDVjMDBkNjQ5NiIsImVtYWlsIjoiZGV2dGVlQGdtYWlsLmNvbSIsIm5hbWUiOiJCZWxsbyBUb2hlZWIiLCJwYXNzd29yZCI6IiQyYSQxMCRBNTBNME1xMDIuUWFsWm1nRndxSmh1dXhjNDM4ZFFUNUpKUFVrM3hLQ3E4WWRQbHZhdXRrUyIsImF2YXRhciI6bnVsbCwicGhvbmUiOm51bGwsIm5hdGlvbmFsaXR5IjpudWxsLCJjcmVhdGVkQXQiOiIyMDIyLTA0LTE3VDA4OjU3OjQyLjM2NFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTA0LTE3VDA4OjU3OjQyLjM2NFoiLCJyb2xlIjp7InJvbGUiOiJzdG9yZSJ9LCJpYXQiOjE2NTAxOTIwNjV9.GqJpcgLspx5qT9h3yR7kZGgD4g5VrS8PgvZRxyLfSAk\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "name",
+          "value": "SuperStore",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "email",
+          "value": "devtee@gmail.com",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "phone",
+          "value": "2349030687052",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "long",
+          "value": "48.82943",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "lat",
+          "value": "7.276842",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "country",
+          "value": "NG",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "cebe8852-6846-44c8-a7b3-35919d12c189",
+      "collectionId": "71882162-328d-471a-a2a0-1e16f1232e22",
+      "method": "POST",
+      "url": "{{multi}}/store/create-store",
+      "headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxODAzNmJkLWZjZDEtNzgxOS1iNDljLTRmNDVjMDBkNjQ5NiIsImVtYWlsIjoiZGV2dGVlQGdtYWlsLmNvbSIsIm5hbWUiOiJCZWxsbyBUb2hlZWIiLCJwYXNzd29yZCI6IiQyYSQxMCRBNTBNME1xMDIuUWFsWm1nRndxSmh1dXhjNDM4ZFFUNUpKUFVrM3hLQ3E4WWRQbHZhdXRrUyIsImF2YXRhciI6bnVsbCwicGhvbmUiOm51bGwsIm5hdGlvbmFsaXR5IjpudWxsLCJjcmVhdGVkQXQiOiIyMDIyLTA0LTE3VDA4OjU3OjQyLjM2NFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTA0LTE3VDA4OjU3OjQyLjM2NFoiLCJyb2xlIjp7InJvbGUiOiJzdG9yZSJ9LCJpYXQiOjE2NTAxOTIwNjV9.GqJpcgLspx5qT9h3yR7kZGgD4g5VrS8PgvZRxyLfSAk\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "name",
+          "value": "SuperStore",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "email",
+          "value": "devtee@gmail.com",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "phone",
+          "value": "2349030687052",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "long",
+          "value": "48.82943",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "lat",
+          "value": "7.276842",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "country",
+          "value": "NG",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    }
+  ]
+}

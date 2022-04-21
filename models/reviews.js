@@ -12,12 +12,15 @@ const reviews = {
     references: {
       model: 'items',
       allowNull: false,
+      unique: 'compositeUniqueKey'
     },
   },
   userId: {
     type: DataTypes.UUID,
     references: {
       model: 'users',
+      allowNull: false,
+      unique: 'compositeUniqueKey'
     },
   },
   content: DataTypes.TEXT,

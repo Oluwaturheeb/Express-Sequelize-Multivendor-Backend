@@ -1,4 +1,7 @@
-import {Sequelize, DataTypes} from 'sequelize';
+import {
+  Sequelize,
+  DataTypes
+} from 'sequelize';
 import users from '../models/users.js';
 import orders from '../models/orders.js';
 import items from '../models/items.js';
@@ -7,7 +10,6 @@ import address from '../models/address.js';
 import categories from '../models/categories.js';
 import reviews from '../models/reviews.js';
 import role from '../models/role.js';
-
 
 export const seq = new Sequelize('multi', 'root', 'password', {
   dialect: 'postgres',
@@ -25,7 +27,6 @@ export const Reviews = seq.define('reviews', reviews);
 export const Roles = seq.define('roles', role);
 
 // associations
-
 // setup roles
 Users.hasOne(Roles);
 Roles.belongsTo(Users);
@@ -63,4 +64,5 @@ Users.hasMany(Address);
 Orders.belongsTo(Users);
 Address.belongsTo(Users);
 
-// seq.sync({force: true});
+// Reviews.sync({force: true});
+export default seq;
